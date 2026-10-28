@@ -1,0 +1,25 @@
+{
+	frps examples/frps.toml
+
+	on_demand_tls {
+		permission frp
+	}
+
+	servers :443 {
+		strict_sni_host on
+		listener_wrappers {
+			frp
+			tls
+		}
+	}
+}
+
+http://, https:// {
+	tls internal {
+		on_demand
+	}
+	route {
+		frp
+		respond "not found" 404
+	}
+}
