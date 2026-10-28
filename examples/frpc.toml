@@ -1,0 +1,21 @@
+serverAddr = "127.0.0.1"
+loginFailExit = false
+auth.token = "{{ .Envs.FRP_TOKEN }}"
+
+[[proxies]]
+name = "web?tls=true&redirect=true"
+type = "http"
+localPort = 19080
+customDomains = ["web.example.com"]
+
+[[proxies]]
+name = "tls"
+type = "https"
+localPort = 19443
+customDomains = ["tls.example.com"]
+
+[[proxies]]
+name = "terminated?tls=true&insecure=true"
+type = "https"
+localPort = 19443
+customDomains = ["terminated.example.com"]

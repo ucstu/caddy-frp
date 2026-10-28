@@ -1,0 +1,3 @@
+auth.token = "{{ .Envs.FRP_TOKEN }}"
+transport.tls.force = true
+allowPorts = [{ start = 20000, end = 20999 }]
